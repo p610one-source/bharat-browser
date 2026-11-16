@@ -1,0 +1,28 @@
+
+{
+  "name": "bharat-browser",
+  "version": "1.0.0",
+  "description": "Bharat Browser - A modern Indian desktop browser",
+  "main": "main.js",
+  "author": "Prithvi",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win"
+  },
+  "devDependencies": {
+    "electron": "^39.0.0",
+    "electron-builder": "^26.0.0"
+  },
+  "build": {
+    "appId": "in.bharat.browser",
+    "productName": "Bharat Browser",
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
