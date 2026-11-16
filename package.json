@@ -7,7 +7,7 @@
   "author": "Prithvi",
   "scripts": {
     "start": "electron .",
-    "dist": "electron-builder --win"
+    "dist": "electron-builder --win --publish never"
   },
   "devDependencies": {
     "electron": "^39.0.0",
@@ -17,8 +17,7 @@
     "appId": "in.bharat.browser",
     "productName": "Bharat Browser",
     "win": {
-      "target": "nsis",
-      "icon": "assets/icon.ico"
+      "target": "nsis"
     },
     "nsis": {
       "oneClick": false,
