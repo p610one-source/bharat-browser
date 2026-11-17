@@ -1,7 +1,7 @@
 
 {
   "name": "bharat-browser",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Bharat Browser - A modern Indian desktop browser",
   "main": "main.js",
   "author": "Prithvi",
@@ -16,8 +16,12 @@
   "build": {
     "appId": "in.bharat.browser",
     "productName": "Bharat Browser",
+    "directories": {
+      "buildResources": "assets"
+    },
     "win": {
-      "target": "nsis"
+      "target": "nsis",
+      "icon": "assets/icon.ico"
     },
     "nsis": {
       "oneClick": false,
