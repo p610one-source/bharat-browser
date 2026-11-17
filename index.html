@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bharat Browser</title>
+
 <style>
 :root {
   --bg:#0b1018;
@@ -15,7 +16,9 @@
   --accent:#ff9933;
   --border:#29384a;
 }
+
 * {box-sizing:border-box}
+
 body {
   margin:0;
   background:var(--bg);
@@ -26,10 +29,12 @@ body {
   flex-direction:column;
   overflow:hidden;
 }
+
 header {
   background:#101722;
   border-bottom:1px solid var(--border);
 }
+
 .tabs {
   height:48px;
   display:flex;
@@ -37,6 +42,7 @@ header {
   gap:7px;
   padding:7px 12px;
 }
+
 .tab {
   background:var(--panel2);
   color:var(--muted);
@@ -49,7 +55,12 @@ header {
   white-space:nowrap;
   text-overflow:ellipsis;
 }
-.tab.active {background:var(--bg);color:var(--text)}
+
+.tab.active {
+  background:var(--bg);
+  color:var(--text);
+}
+
 #newTab {
   background:transparent;
   color:var(--text);
@@ -57,12 +68,14 @@ header {
   font-size:22px;
   cursor:pointer;
 }
+
 .toolbar {
   display:flex;
   align-items:center;
   gap:9px;
   padding:10px 14px;
 }
+
 .tool {
   border:0;
   background:transparent;
@@ -72,7 +85,9 @@ header {
   padding:7px;
   border-radius:8px;
 }
+
 .tool:hover {background:var(--panel2)}
+
 #address {
   flex:1;
   background:var(--panel2);
@@ -83,9 +98,16 @@ header {
   outline:none;
   font-size:14px;
 }
+
 #address:focus {border-color:var(--accent)}
 #bookmark {color:var(--accent)}
-#browserArea {flex:1;position:relative;min-height:0}
+
+#browserArea {
+  flex:1;
+  position:relative;
+  min-height:0;
+}
+
 #home {
   height:100%;
   overflow:auto;
@@ -94,16 +116,40 @@ header {
     radial-gradient(ellipse at 50% 0%,#26364a 0%,transparent 55%),
     var(--bg);
 }
-.hero {text-align:center;margin:20px auto 35px}
-.flag {font-size:30px}
+
+.hero {
+  text-align:center;
+  margin:20px auto 35px;
+}
+
+.brand-logo {
+  display:flex;
+  justify-content:center;
+  margin-bottom:15px;
+}
+
+.brand-logo img {
+  width:110px;
+  height:110px;
+  object-fit:contain;
+  border-radius:24px;
+  filter:drop-shadow(0 0 20px rgba(255,153,51,.25));
+}
+
 .logo {
   font-size:48px;
   font-weight:800;
   margin:12px 0;
   letter-spacing:-2px;
 }
+
 .logo span {color:var(--accent)}
-.subtitle {color:var(--muted)}
+
+.subtitle {
+  color:var(--muted);
+  font-size:15px;
+}
+
 .search {
   display:flex;
   max-width:720px;
@@ -113,6 +159,7 @@ header {
   border-radius:15px;
   padding:7px;
 }
+
 .search input {
   flex:1;
   min-width:0;
@@ -123,6 +170,7 @@ header {
   padding:13px;
   font-size:16px;
 }
+
 .search button {
   border:0;
   border-radius:10px;
@@ -132,11 +180,13 @@ header {
   font-weight:bold;
   cursor:pointer;
 }
+
 .section-title {
   max-width:900px;
   margin:0 auto 18px;
   font-size:17px;
 }
+
 .shortcuts {
   max-width:900px;
   margin:auto;
@@ -144,6 +194,7 @@ header {
   grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
   gap:15px;
 }
+
 .shortcut {
   background:var(--panel);
   border:1px solid var(--border);
@@ -153,17 +204,25 @@ header {
   cursor:pointer;
   transition:.2s;
 }
+
 .shortcut:hover {
   transform:translateY(-4px);
   border-color:var(--accent);
 }
-.shortcut .emoji {font-size:30px;margin-bottom:12px}
+
+.shortcut .emoji {
+  font-size:30px;
+  margin-bottom:12px;
+}
+
 .shortcut small {color:var(--muted)}
+
 #views {
   position:absolute;
   inset:0;
   display:none;
 }
+
 #views webview {
   width:100%;
   height:100%;
@@ -171,7 +230,9 @@ header {
   display:none;
   background:white;
 }
+
 #views webview.active {display:flex}
+
 #status {
   height:25px;
   padding:4px 14px;
@@ -180,6 +241,7 @@ header {
   background:#101722;
   border-top:1px solid var(--border);
 }
+
 @media(max-width:600px) {
   #home {padding:30px 15px}
   .logo {font-size:36px}
@@ -187,42 +249,69 @@ header {
 }
 </style>
 </head>
+
 <body>
+
 <header>
   <div class="tabs" id="tabs">
     <button id="newTab" title="New tab">＋</button>
   </div>
+
   <div class="toolbar">
     <button class="tool" id="back" title="Back">←</button>
     <button class="tool" id="forward" title="Forward">→</button>
     <button class="tool" id="reload" title="Reload">↻</button>
     <button class="tool" id="homeBtn" title="Home">⌂</button>
-    <input id="address" placeholder="Search or enter a website address">
+
+    <input id="address"
+      placeholder="Search or enter a website address">
+
     <button class="tool" id="bookmark" title="Bookmark">★</button>
   </div>
 </header>
 
 <main id="browserArea">
+
   <section id="home">
+
     <div class="hero">
-      <div class="flag">🇮🇳</div>
+
+      <div class="brand-logo">
+        <img src="assets/logo.png"
+          alt="Bharat Browser Logo">
+      </div>
+
       <div class="logo">BHARAT<span>.</span></div>
-      <div class="subtitle">A browser built for a billion possibilities.</div>
+
+      <div class="subtitle">
+        Browse • Explore • Grow
+      </div>
+
+      <div class="subtitle">
+        A browser built for a billion possibilities. 🇮🇳
+      </div>
+
     </div>
 
     <form class="search" id="searchForm">
-      <input id="homeSearch" placeholder="Search the web or enter a URL...">
-      <button>Search</button>
+      <input id="homeSearch"
+        placeholder="Search the web or enter a URL...">
+      <button type="submit">Search</button>
     </form>
 
     <div class="section-title">Quick access</div>
+
     <div class="shortcuts" id="shortcuts"></div>
+
   </section>
 
   <div id="views"></div>
+
 </main>
 
-<footer id="status">Bharat Browser · Ready</footer>
+<footer id="status">
+  Bharat Browser 1.1.0 · Ready
+</footer>
 
 <script>
 const tabsEl = document.getElementById("tabs");
@@ -249,10 +338,17 @@ const sites = [
 function renderShortcuts() {
   const container = document.getElementById("shortcuts");
   container.innerHTML = "";
+
   sites.forEach(([emoji,name,url]) => {
     const item = document.createElement("div");
     item.className = "shortcut";
-    item.innerHTML = `<div class="emoji">${emoji}</div><strong>${name}</strong><br><small>Open website</small>`;
+
+    item.innerHTML = `
+      <div class="emoji">${emoji}</div>
+      <strong>${name}</strong><br>
+      <small>Open website</small>
+    `;
+
     item.addEventListener("click", () => navigate(url));
     container.appendChild(item);
   });
@@ -260,51 +356,77 @@ function renderShortcuts() {
 
 function createTab(url = null) {
   const id = nextId++;
-  const tab = {id,url:null,view:null,title:"New Tab"};
+
+  const tab = {
+    id,
+    url:null,
+    view:null,
+    title:"New Tab"
+  };
+
   tabs.push(tab);
 
   const button = document.createElement("div");
   button.className = "tab";
   button.textContent = "New Tab";
   button.addEventListener("click", () => switchTab(id));
+
   tab.button = button;
-  tabsEl.insertBefore(button, document.getElementById("newTab"));
+
+  tabsEl.insertBefore(
+    button,
+    document.getElementById("newTab")
+  );
 
   const view = document.createElement("webview");
   view.setAttribute("partition","persist:bharat");
-  view.setAttribute("webpreferences","contextIsolation=yes");
+
   view.addEventListener("page-title-updated", e => {
     tab.title = e.title || "New Tab";
     button.textContent = tab.title.slice(0,22);
   });
+
   view.addEventListener("did-navigate", e => {
     tab.url = e.url;
     if (activeId === id) address.value = e.url;
   });
+
   view.addEventListener("did-navigate-in-page", e => {
     tab.url = e.url;
     if (activeId === id) address.value = e.url;
   });
+
   view.addEventListener("did-fail-load", e => {
-    if (e.errorCode !== -3) statusEl.textContent = "Could not load page";
+    if (e.errorCode !== -3) {
+      statusEl.textContent = "Could not load page";
+    }
   });
+
   view.addEventListener("did-start-loading", () => {
-    if (activeId === id) statusEl.textContent = "Loading...";
+    if (activeId === id) {
+      statusEl.textContent = "Loading...";
+    }
   });
+
   view.addEventListener("did-stop-loading", () => {
-    if (activeId === id) statusEl.textContent = "Bharat Browser · Ready";
+    if (activeId === id) {
+      statusEl.textContent = "Bharat Browser 1.1.0 · Ready";
+    }
   });
 
   views.appendChild(view);
   tab.view = view;
+
   switchTab(id);
 
   if (url) navigate(url);
+
   return tab;
 }
 
 function switchTab(id) {
   activeId = id;
+
   const tab = tabs.find(t => t.id === id);
   if (!tab) return;
 
@@ -323,11 +445,20 @@ function normalize(input) {
   if (!input) return null;
 
   if (/^https?:\/\//i.test(input)) return input;
-  if (/^localhost(:\d+)?(\/.*)?$/i.test(input)) return "http://" + input;
-  if (/^[\w-]+(\.[\w-]+)+(:\d+)?(\/.*)?$/i.test(input) && !input.includes(" ")) {
+
+  if (/^localhost(:\d+)?(\/.*)?$/i.test(input)) {
+    return "http://" + input;
+  }
+
+  if (
+    /^[\w-]+(\.[\w-]+)+(:\d+)?(\/.*)?$/i.test(input) &&
+    !input.includes(" ")
+  ) {
     return "https://" + input;
   }
-  return "https://www.google.com/search?q=" + encodeURIComponent(input);
+
+  return "https://www.google.com/search?q=" +
+    encodeURIComponent(input);
 }
 
 function navigate(input) {
@@ -335,72 +466,106 @@ function navigate(input) {
   if (!url) return;
 
   let tab = tabs.find(t => t.id === activeId);
+
   if (!tab) tab = createTab();
 
   tab.url = url;
   tab.view.src = url;
+
   home.style.display = "none";
   views.style.display = "block";
   address.value = url;
 }
 
-document.getElementById("newTab").addEventListener("click", () => createTab());
+document.getElementById("newTab")
+  .addEventListener("click", () => createTab());
 
-document.getElementById("searchForm").addEventListener("submit", e => {
-  e.preventDefault();
-  navigate(document.getElementById("homeSearch").value);
-});
+document.getElementById("searchForm")
+  .addEventListener("submit", e => {
+    e.preventDefault();
+    navigate(
+      document.getElementById("homeSearch").value
+    );
+  });
 
 address.addEventListener("keydown", e => {
   if (e.key === "Enter") navigate(address.value);
 });
 
-document.getElementById("back").addEventListener("click", () => {
-  const t = tabs.find(t => t.id === activeId);
-  if (t?.view.canGoBack()) t.view.goBack();
-});
-document.getElementById("forward").addEventListener("click", () => {
-  const t = tabs.find(t => t.id === activeId);
-  if (t?.view.canGoForward()) t.view.goForward();
-});
-document.getElementById("reload").addEventListener("click", () => {
-  const t = tabs.find(t => t.id === activeId);
-  if (t?.url) t.view.reload();
-});
-document.getElementById("homeBtn").addEventListener("click", () => {
-  const t = tabs.find(t => t.id === activeId);
-  if (t) {
-    t.url = null;
-    t.view.src = "about:blank";
-    switchTab(t.id);
-  }
-});
+document.getElementById("back")
+  .addEventListener("click", () => {
+    const t = tabs.find(t => t.id === activeId);
+    if (t?.view.canGoBack()) t.view.goBack();
+  });
 
-document.getElementById("bookmark").addEventListener("click", () => {
-  const t = tabs.find(t => t.id === activeId);
-  if (!t?.url) return;
-  const bookmarks = JSON.parse(localStorage.getItem("bharat-bookmarks") || "[]");
-  if (!bookmarks.includes(t.url)) bookmarks.push(t.url);
-  localStorage.setItem("bharat-bookmarks",JSON.stringify(bookmarks));
-  statusEl.textContent = "Bookmark saved!";
-});
+document.getElementById("forward")
+  .addEventListener("click", () => {
+    const t = tabs.find(t => t.id === activeId);
+    if (t?.view.canGoForward()) t.view.goForward();
+  });
+
+document.getElementById("reload")
+  .addEventListener("click", () => {
+    const t = tabs.find(t => t.id === activeId);
+    if (t?.url) t.view.reload();
+  });
+
+document.getElementById("homeBtn")
+  .addEventListener("click", () => {
+    const t = tabs.find(t => t.id === activeId);
+
+    if (t) {
+      t.url = null;
+      t.view.src = "about:blank";
+      switchTab(t.id);
+    }
+  });
+
+document.getElementById("bookmark")
+  .addEventListener("click", () => {
+    const t = tabs.find(t => t.id === activeId);
+    if (!t?.url) return;
+
+    const bookmarks = JSON.parse(
+      localStorage.getItem("bharat-bookmarks") || "[]"
+    );
+
+    if (!bookmarks.includes(t.url)) {
+      bookmarks.push(t.url);
+    }
+
+    localStorage.setItem(
+      "bharat-bookmarks",
+      JSON.stringify(bookmarks)
+    );
+
+    statusEl.textContent = "Bookmark saved!";
+  });
 
 window.bharat?.onNewTab(url => createTab(url));
+
 window.bharat?.onDownload(filename => {
   statusEl.textContent = "Downloaded: " + filename;
 });
 
 document.addEventListener("keydown", e => {
-  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "t") {
-    e.preventDefault(); createTab();
+  if ((e.ctrlKey || e.metaKey) &&
+      e.key.toLowerCase() === "t") {
+    e.preventDefault();
+    createTab();
   }
-  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "l") {
-    e.preventDefault(); address.focus(); address.select();
+
+  if ((e.ctrlKey || e.metaKey) &&
+      e.key.toLowerCase() === "l") {
+    e.preventDefault();
+    address.focus();
+    address.select();
   }
 });
 
 renderShortcuts();
 createTab();
 </script>
+
 </body>
 </html>
