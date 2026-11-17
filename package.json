@@ -19,6 +19,16 @@
     "directories": {
       "buildResources": "assets"
     },
+    "files": [
+      "**/*",
+      "!assets/.gitkeep"
+    ],
+    "extraResources": [
+      {
+        "from": "assets/logo.png",
+        "to": "assets/logo.png"
+      }
+    ],
     "win": {
       "target": "nsis",
       "icon": "assets/icon.ico"
